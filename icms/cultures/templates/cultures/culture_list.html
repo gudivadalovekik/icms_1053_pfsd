@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: white; /* Keep the background white */
+            color: black; /* Set text color to black */
+        }
+
+        .culture-card {
+            background-color: black; /* Change the background color of the card components to black */
+            color: white; /* Change the text color to white for better visibility */
+        }
+
+        .culture-card img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <h1 class="text-center">Cultures</h1>
+    <div class="container">
+        <div class="row">
+            {% for culture in cultures %}
+                <div class="col-md-4">
+                    <div class="card culture-card">
+                        <a href="{% if culture.subcategories.exists %}{% url 'culture_list' culture.id %}{% else %}{{ culture.external_url }}{% endif %}">
+                            {% if culture.image_url %}
+                                <img src="{{ culture.image_url }}" alt="{{ culture.name }} Image" class="card-img-top img-fluid">
+                            {% endif %}
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ culture.name }}</h5>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .city-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .city-row {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .city-card {
+            flex: 0 0 calc(33.33% - 20px);
+            margin: 10px;
+            text-align: center;
+            padding: 15px; /* Padding for spacing */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+        }
+
+        .city-card img {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer; /* Add cursor pointer for better user experience */
+        }
+
+        .city-card a {
+            font-weight: bold; /* Make hyperlink words bold */
+            text-decoration: none;
+            color: #000; /* Set the text color to black */
+        }
+
+        .city-card p {
+            text-align: center; /* Center-align the city titles */
+            margin-top: 10px; /* Margin to separate the text from the image */
+        }
+
+        /* Define different background colors for the thumbnails */
+        .city-card:nth-child(odd) {
+            background-color: #f8f9fa; /* Light gray */
+        }
+
+        .city-card:nth-child(even) {
+            background-color: #e6e6e6; /* Lighter gray */
+        }
+    </style>
+</head>
+<body>
+    <center><h1>Cities</h1></center>
+    <div class="city-container">
+        <div class="city-row">
+            {% for city in cities %}
+                <div class="city-card">
+                    <a href="{{ city.external_url }}">
+                        <img src="{{ city.image_url }}" alt="{{ city.name }} Image">
+                        <p>{{ city.name }}</p>
+                    </a>
+                </div>
+                {% if forloop.counter|divisibleby:3 and not forloop.last %}
+                    </div><div class="city-row">
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

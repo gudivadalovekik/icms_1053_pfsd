@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Navigation Buttons</title>
+    <style>
+        body {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYho3SIdkdjGh6ZGvI4GxrqeLge3Q-LsGdXelJMPbGzmWbOqWJjo0FDWUsoPx4NqaEfjQ&usqp=CAU'); /* Updated background image URL */
+            background-size: 50%; /* Reduce image size to half */
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333; /* Text color for the heading */
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        li {
+            display: inline;
+            margin: 10px;
+        }
+
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF; /* Button background color */
+            color: #fff; /* Button text color */
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #0056b3; /* Button background color on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Choose a Category</h1>
+    <ul>
+        <li><a href="{% url 'culture_list' %}">Cultures</a></li>
+        <li><a href="{% url 'city_list' %}">Historical Cities</a></li>
+        <li><a href="{% url 'food_list' %}">Food</a></li>
+    </ul>
+</body>
+</html>
